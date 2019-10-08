@@ -1,0 +1,77 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 04, 2019 at 02:45 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Database: `attendance_system`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject_allotment`
+--
+
+CREATE TABLE `subject_allotment` (
+  `sub_alot_id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL,
+  `role` text COMMENT '{ class : [labname,theoryname,...]'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subject_allotment`
+--
+
+INSERT INTO `subject_allotment` (`sub_alot_id`, `t_id`, `role`) VALUES
+(1, 41, '{\'D1\' : [\'JPL\'], \'D2\' : [\'Logic Design\']}'),
+(2, 42, '{\'D2\' : [\'JPL\'], \'D1\' : [\'Logic Design\']}'),
+(3, 43, '{\'D3\' : [\'JPL\'], \'D4\' : [\'Logic Design\']}'),
+(4, 44, '{\'D4\' : [\'JPL\'], \'D3\' : [\'Logic Design\']}'),
+(5, 45, '{\'D1\' : [\'PHY\', \'OS\'], \'D2\' : [\'CN\', \'DBMS\']}'),
+(6, 46, '{\'D2\' : [\'PHY\', \'OS\'], \'D1\' : [\'CN\', \'DBMS\']}'),
+(7, 47, '{\'D3\' : [\'PHY\', \'DBMS\'], \'D4\' : [\'CN\', \'OS\']}'),
+(8, 48, '{\'D4\' : [\'PHY\', \'DBMS\'], \'D3\' : [\'CN\', \'OS\']}'),
+(9, 49, '{\'D3\' : [\'AM-IV\'], \'D4\' : [\'AM-IV\']}'),
+(10, 50, '{\'D4\' : [\'DSA\',\'COA\'], \'D3\' : [\'COA, DSA\']}');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `subject_allotment`
+--
+ALTER TABLE `subject_allotment`
+  ADD PRIMARY KEY (`sub_alot_id`),
+  ADD KEY `FK_1` (`t_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `subject_allotment`
+--
+ALTER TABLE `subject_allotment`
+  MODIFY `sub_alot_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `subject_allotment`
+--
+ALTER TABLE `subject_allotment`
+  ADD CONSTRAINT `FK_1` FOREIGN KEY (`t_id`) REFERENCES `user` (`u_id`);
+COMMIT;
